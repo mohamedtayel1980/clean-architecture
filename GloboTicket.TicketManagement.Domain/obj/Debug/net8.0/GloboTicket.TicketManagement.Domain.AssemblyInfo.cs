@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GloboTicket.TicketManagement.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfc32abf56fc0712576434aab7a4a10d01ee10e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9a3d424482953472d8fb748da5bf2bd642256cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("GloboTicket.TicketManagement.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GloboTicket.TicketManagement.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
