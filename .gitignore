@@ -1,0 +1,10 @@
+# Ignore Visual Studio files
+.vs/
+*.suo
+
+# Ignore other specific files or directories
+*.v2
+DesignTimeBuild/
+FileContentIndex/
+v17/
+DocumentLayout.json
