@@ -8,3 +8,9 @@ DesignTimeBuild/
 FileContentIndex/
 v17/
 DocumentLayout.json
+
+# Ignore Debug build artifacts
+GloboTicket.TicketManagement.Application/obj/
+
+# Ignore generated cache files
+*.cache
