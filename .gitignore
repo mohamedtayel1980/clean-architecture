@@ -39,3 +39,6 @@ obj/
 # Ignore other common build artifacts
 *.pdb
 *.cache
+# Ignore other cache and temporary files
+.dbcache.v2/
+.futdcache.v2/
