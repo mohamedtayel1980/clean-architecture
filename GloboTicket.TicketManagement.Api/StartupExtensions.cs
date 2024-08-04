@@ -29,7 +29,14 @@ namespace GloboTicket.TicketManagement.Api
 
         public static WebApplication ConfigurePipeline(this WebApplication app)
         {
+            app.UseCors("open");
 
+            
+
+            app.UseHttpsRedirection();
+            app.MapControllers();
+
+            return app;
         }
     }
 }
