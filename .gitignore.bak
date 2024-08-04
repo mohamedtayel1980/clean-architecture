@@ -18,24 +18,3 @@ GloboTicket.TicketManagement.Application/obj/
 appsettings.json
 appsettings.Development.json
 appsettings.Production.json
-
-# Ignore build output directories
-bin/
-obj/
-
-# Ignore user-specific files
-.vscode/
-*.user
-*.suo
-
-# Ignore temporary files
-*.tmp
-*.log
-
-# Ignore compiled DLLs and executables
-*.dll
-*.exe
-
-# Ignore other common build artifacts
-*.pdb
-*.cache
