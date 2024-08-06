@@ -1,6 +1,10 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using GloboTicket.TicketManagement.Api;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+var app = builder
+       .ConfigureServices()
+       .ConfigurePipeline();
+
 
 app.Run();
