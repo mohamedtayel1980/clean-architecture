@@ -43,7 +43,7 @@ namespace GloboTicket.TicketManagement.Application.Features.Events.Commands.Crea
             }
 
             return @event.EventId;
-            return @event.EventId;
+            
         }
     }
 }

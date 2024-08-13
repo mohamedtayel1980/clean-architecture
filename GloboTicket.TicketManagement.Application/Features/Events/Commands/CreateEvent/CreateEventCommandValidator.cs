@@ -34,8 +34,10 @@ namespace GloboTicket.TicketManagement.Application.Features.Events.Commands.Crea
                 .GreaterThan(0);
         }
 
-        private async Task<bool> EventNameAndDateUnique(CreateEventCommand e, CancellationToken token)
+        public async Task<bool> EventNameAndDateUnique(CreateEventCommand e, CancellationToken token)
         {
+            Console.WriteLine($"Checking uniqueness for event: {e.Name} on {e.Date}");
+
             return !await _eventRepository.IsEventNameAndDateUnique(e.Name, e.Date);
         }
     }
