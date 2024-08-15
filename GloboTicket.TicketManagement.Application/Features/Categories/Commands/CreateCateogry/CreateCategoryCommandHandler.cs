@@ -18,8 +18,8 @@ namespace GloboTicket.TicketManagement.Application.Features.Categories.Commands.
 
         public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
+            var category = _mapper.Map<Category>(request);
             var createCategoryCommandResponse = new CreateCategoryCommandResponse();
-
             var validator = new CreateCategoryCommandValidator();
             var validationResult = await validator.ValidateAsync(request);
 
@@ -32,9 +32,9 @@ namespace GloboTicket.TicketManagement.Application.Features.Categories.Commands.
                     createCategoryCommandResponse.ValidationErrors.Add(error.ErrorMessage);
                 }
             }
+
             if (createCategoryCommandResponse.Success)
             {
-                var category = new Category() { Name = request.Name };
                 category = await _categoryRepository.AddAsync(category);
                 createCategoryCommandResponse.Category = _mapper.Map<CreateCategoryDto>(category);
             }

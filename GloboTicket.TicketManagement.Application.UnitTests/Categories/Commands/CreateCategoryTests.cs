@@ -24,7 +24,16 @@ namespace GloboTicket.TicketManagement.Application.UnitTests.Categories.Commands
 
             _mapper = configurationProvider.CreateMapper();
         }
+        [Fact]
+        public void AutoMapper_Configuration_IsValid()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<MappingProfile>();
+            });
 
+            config.AssertConfigurationIsValid();
+        }
         [Fact]
         public async Task Handle_ValidCategory_AddedToCategoriesRepo()
         {
