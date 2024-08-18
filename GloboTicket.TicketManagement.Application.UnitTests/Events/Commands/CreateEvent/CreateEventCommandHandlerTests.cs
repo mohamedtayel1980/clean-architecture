@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using GloboTicket.TicketManagement.Application.Exceptions;
 using GloboTicket.TicketManagement.Application.Profiles;
 
-namespace GloboTicket.TicketManagement.Application.UnitTests.Events.Commands
+namespace GloboTicket.TicketManagement.Application.UnitTests.Events.Commands.CreateEvent
 {
     public class CreateEventCommandHandlerTests
     {
@@ -112,13 +112,13 @@ namespace GloboTicket.TicketManagement.Application.UnitTests.Events.Commands
             var request = new CreateEventCommand
             {
                 Name = eventName,
-                
+
                 Price = 50,
                 Artist = "Test Artist",
                 Date = DateTime.Now.AddDays(20),
                 Description = "Join John for his farewell tour across 15 continents. John really needs no introduction since he has already mesmerized the world with his banjo.",
                 ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/GloboTicket/banjo.jpg",
-               
+
                 CategoryId = Guid.NewGuid()
             };
 
@@ -148,11 +148,11 @@ namespace GloboTicket.TicketManagement.Application.UnitTests.Events.Commands
             });
 
             var result = await _handler.Handle(request, CancellationToken.None);
-         
+
             _eventRepositoryMock.Verify(repo => repo.AddAsync(It.IsAny<Event>()), Times.Once);
             result.EventDto.EventId.ShouldBe(eventEntity.EventId);
         }
-        
+
         [Fact]
         public async Task Handle_Should_Send_Email_Notification()
         {

@@ -1,10 +1,6 @@
-﻿using GloboTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
-using MediatR;
-using System;
-
-namespace GloboTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent
+﻿namespace GloboTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent
 {
-    public class UpdateEventCommand : IRequest<UpdateEventCommandResponse>
+    public class UpdateEventDto
     {
         public Guid EventId { get; set; }
         public string Name { get; set; }
