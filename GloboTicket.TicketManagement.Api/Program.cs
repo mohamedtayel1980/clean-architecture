@@ -8,3 +8,6 @@ var app = builder
 
 
 app.Run();
+
+
+public partial class Program { }
