@@ -2,8 +2,12 @@
 using GloboTicket.TicketManagement.Api.Services;
 using GloboTicket.TicketManagement.Application;
 using GloboTicket.TicketManagement.Application.Contracts;
+using GloboTicket.TicketManagement.Identity;
+using GloboTicket.TicketManagement.Identity.Models;
 using GloboTicket.TicketManagement.Infrastructure;
 using GloboTicket.TicketManagement.Persistence;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 namespace GloboTicket.TicketManagement.Api
 {
     public static class StartupExtensions
@@ -15,6 +19,7 @@ namespace GloboTicket.TicketManagement.Api
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
+            builder.Services.AddIdentityServices(builder.Configuration);
 
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddControllers();
@@ -28,13 +33,21 @@ namespace GloboTicket.TicketManagement.Api
             .SetIsOriginAllowed(pol => true)
             .AllowAnyHeader()
             .AllowCredentials()));
-
+            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             return builder.Build();
         }
 
         public static WebApplication ConfigurePipeline(this WebApplication app)
         {
+            app.MapIdentityApi<ApplicationUser>();
+
+            app.MapPost("/Logout", async (ClaimsPrincipal user, SignInManager<ApplicationUser> signInManager) =>
+            {
+                await signInManager.SignOutAsync();
+                return TypedResults.Ok();
+            });
+
             app.UseCors("open");
 
             if (app.Environment.IsDevelopment())
